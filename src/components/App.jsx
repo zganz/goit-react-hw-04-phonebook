@@ -1,16 +1,25 @@
-export const App = () => {
+import React from 'react';
+// import {Form} from './Form/Form';
+
+export class App extends React.Component {
+  state = {
+    contacts: [],
+    filter: '',
+  };
+}
+
+
+render() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <h1>Phonebook</h1>
+      <Form onSubmit={this.formSubmit} />
+      {/* <h2>Contacts</h2>
+      <Filter value={this.state.filter} onChange={this.onChangeFilter} />
+      <ContactList
+        contacts={this.returnFilteredContacts()}
+        onDelete={this.deleteContact}
+      /> */}
     </div>
   );
-};
+}
