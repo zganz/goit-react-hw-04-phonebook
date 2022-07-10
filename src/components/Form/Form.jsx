@@ -12,7 +12,7 @@ export class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.onSubmit} className={css.form}>
-        <label>
+        <label className={css.label}>
           Имя
           <input
             type="text"
@@ -22,7 +22,7 @@ export class Form extends React.Component {
             required
           />
         </label>
-        <label>
+        <label className={css.label}>
           Номер
           <input
             type="tel"
