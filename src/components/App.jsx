@@ -1,20 +1,24 @@
 import React from 'react';
-import {Form} from './Form/Form';
+import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 
 export class App extends React.Component {
   state = {
     contacts: [],
-    filter: '',
   };
 
-
+  handlePhonebookFormSubmit = data => {
+    console.log(this.state);
+    this.setState({
+      contacts: [...this.state.contacts, data],
+    });
+  };
 
   render() {
-    return <div>
-              <h1>Phonebook</h1>
-              <Form />
-          </div>
-    
+    return (
+      <div>
+        <h1>Phonebook</h1>
+        <PhonebookForm onSubmit={this.handlePhonebookFormSubmit} />
+      </div>
+    );
   }
-
 }
