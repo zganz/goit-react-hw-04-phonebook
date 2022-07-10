@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+// import PropTypes from 'prop-types';
+// import { nanoid } from 'nanoid';
 import css from './form.module.css';
 
 export class Form extends React.Component {
