@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
+import {ContactList} from './Contactlist/Contactlist';
 
 export class App extends React.Component {
   state = {
@@ -18,6 +19,7 @@ export class App extends React.Component {
       <div>
         <h1>Phonebook</h1>
         <PhonebookForm onSubmit={this.handlePhonebookFormSubmit} />
+        <ContactList contacts={this.state.contacts} />
       </div>
     );
   }
