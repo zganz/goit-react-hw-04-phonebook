@@ -15,6 +15,12 @@ export class App extends React.Component {
   };
 
   handlePhonebookFormSubmit = data => {
+    const { name } = data;
+    const { contacts } = this.state;
+    if (contacts.some(contact => contact.name === name)) {
+      return alert(`${name} is already in contacts`);
+    }
+
     this.setState({
       contacts: [...this.state.contacts, data],
     });
@@ -32,9 +38,11 @@ export class App extends React.Component {
         );
   };
 
-  haveDublicats = (contacts, data) => {
-    const alert = contacts.some(contact => contact.name === data.name);
-    return alert(`${data.name} is already in contacts`);
+  handleDelete = id => {
+    const updContacts = this.state.contacts.filter(
+      contact => contact.id !== id
+    );
+    this.setState({ contacts: updContacts });
   };
 
   render() {
@@ -48,7 +56,10 @@ export class App extends React.Component {
           handleChange={this.handleFilterChange}
         />
         <h1>Contacts</h1>
-        <ContactList contacts={this.getContacts()} />
+        <ContactList
+          contacts={this.getContacts()}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }

@@ -1,11 +1,13 @@
-// import PropTypes from 'prop-types';
-import { Contact } from '../Contact/Contact';
 
-export const ContactList = ({ contacts }) => {
+
+export const ContactList = ({ contacts, handleDelete }) => {
   return (
     <ul>
       {contacts.map(({ name, number, id }) => (
-        <Contact name={name} number={number} id={id} />
+        <li key={id}> 
+          <span>{`${name}: ${number}`}</span>  
+          <span><button onClick={() => handleDelete(id)}>delete</button></span> 
+        </li>
       ))}
     </ul>
   );
