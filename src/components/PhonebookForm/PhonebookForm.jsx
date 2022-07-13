@@ -27,7 +27,7 @@ export class PhonebookForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} className={css.form}>
         <label className={css.label}>
-          Имя
+          Name
           <input
             type="text"
             name="name"
@@ -39,7 +39,7 @@ export class PhonebookForm extends React.Component {
           />
         </label>
         <label className={css.label}>
-          Номер
+          Number
           <input
             type="tel"
             name="number"

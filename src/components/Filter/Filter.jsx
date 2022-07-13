@@ -1,6 +1,6 @@
 export const Filter = ({ value, handleChange }) => {
   return (
-    <div>
+    <div style={{ marginLeft: '70px' }}>
       <input
         type="text"
         name="filter"

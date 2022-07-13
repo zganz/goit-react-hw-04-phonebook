@@ -47,15 +47,19 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div
+        style={{
+          marginLeft: '60px',
+        }}
+      >
+        <h1 style={{ marginLeft: '60px' }}>Phonebook</h1>
         <PhonebookForm onSubmit={this.handlePhonebookFormSubmit} />
-        <h3>Search</h3>
+        <h3 style={{ marginLeft: '120px' }}>Search</h3>
         <Filter
           value={this.state.filter}
           handleChange={this.handleFilterChange}
         />
-        <h1>Contacts</h1>
+        <h1 style={{ marginLeft: '70px' }}>Contacts</h1>
         <ContactList
           contacts={this.getContacts()}
           handleDelete={this.handleDelete}
