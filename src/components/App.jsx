@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useState, useEffect } from 'react';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { ContactList } from './Contactlist/Contactlist';
@@ -15,16 +15,30 @@ export const App = () => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  handlePhonebookFormSubmit = data => {
+  const handlePhonebookFormSubmit = data => {
     const { name } = data;
-    const { contacts } = this.state;
     if (contacts.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts`);
     }
 
-    this.setState({
-      contacts: [...this.state.contacts, data],
-    });
+    setContacts([...contacts, data]);
+  };
+
+  const handleFilterChange = value => {
+    setFilter(value);
+  };
+
+  const getContacts = () => {
+    return filter === ''
+      ? contacts
+      : contacts.filter(({ name }) =>
+          name.toLowerCase().includes(filter.toLowerCase())
+        );
+  };
+
+  const handleDelete = id => {
+    const updContacts = contacts.filter(contact => contact.id !== id);
+    setContacts(updContacts);
   };
 
   return (
@@ -34,17 +48,11 @@ export const App = () => {
       }}
     >
       <h1 style={{ marginLeft: '60px' }}>Phonebook</h1>
-      <PhonebookForm onSubmit={this.handlePhonebookFormSubmit} />
+      <PhonebookForm onSubmit={handlePhonebookFormSubmit} />
       <h3 style={{ marginLeft: '120px' }}>Search</h3>
-      <Filter
-        value={this.state.filter}
-        handleChange={this.handleFilterChange}
-      />
+      <Filter value={filter} handleChange={handleFilterChange} />
       <h1 style={{ marginLeft: '70px' }}>Contacts</h1>
-      <ContactList
-        contacts={this.getContacts()}
-        handleDelete={this.handleDelete}
-      />
+      <ContactList contacts={getContacts()} handleDelete={handleDelete} />
     </div>
   );
 };
